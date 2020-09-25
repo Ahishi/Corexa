@@ -11,7 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Alkunakyma"></activity>
         <activity android:name=".Asetukset" />
-        <activity android:name=".Etusivu" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

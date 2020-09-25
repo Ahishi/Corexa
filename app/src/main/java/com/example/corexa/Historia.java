@@ -9,17 +9,17 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Asetukset extends AppCompatActivity {
+public class Historia extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asetukset);
+        setContentView(R.layout.activity_historia);
 
         bottomNavigationView = findViewById(R.id.bottomNav);
 
-        bottomNavigationView.setSelectedItemId(R.id.settings);
+        bottomNavigationView.setSelectedItemId(R.id.history);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -32,12 +32,12 @@ public class Asetukset extends AppCompatActivity {
                         return true;
 
                     case R.id.settings:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Asetukset.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.history:
-                        startActivity(new Intent(getApplicationContext()
-                                , Historia.class));
-                        overridePendingTransition(0, 0);
                         return true;
 
                 }
@@ -46,5 +46,4 @@ public class Asetukset extends AppCompatActivity {
         });
     }
 }
-
 
