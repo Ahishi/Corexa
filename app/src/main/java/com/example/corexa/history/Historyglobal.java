@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Historyglobal {
-    private List<Historylist> Presidents;
+    private List<Historylist> history;
     private static final Historyglobal ourInstance = new Historyglobal();
 
     public static Historyglobal getInstance() {
@@ -16,12 +16,12 @@ public class Historyglobal {
 
     private Historyglobal() {
 
-        Presidents = new ArrayList<>();
+        history = new ArrayList<>();
     }
 
     public List<Historylist> getHistorylistValues() {
 
-        return Presidents;
+        return history;
     }
 
 
