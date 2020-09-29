@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext()
-                                ,Asetukset.class));
+                                ,SettingsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext()
-                                ,Historia.class));
+                                ,HistoryActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
