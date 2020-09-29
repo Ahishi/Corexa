@@ -3,50 +3,48 @@ package com.example.corexa;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_asetukset);
 
-        bottomNavigationView=findViewById(R.id.bottomNav);
+        bottomNavigationView = findViewById(R.id.bottomNav);
 
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.settings);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
+                        startActivity(new Intent(getApplicationContext()
+                                ,MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.settings:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Asetukset.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext()
-                                ,Historia.class));
-                        overridePendingTransition(0,0);
+                                , HistoryActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
                 return false;
             }
         });
-
-
-
-
     }
 }
+
+

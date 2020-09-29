@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Etusivu"
+        android:icon="@drawable/ic_home"/>
+
+
+    <item
+        android:id="@+id/history"
+        android:title="Historia"
+        android:icon="@drawable/ic_history"/>
+
+    <item
+        android:id="@+id/settings"
+        android:title="Asetukset"
+        android:icon="@drawable/ic_settings"/>
+
+</menu>
