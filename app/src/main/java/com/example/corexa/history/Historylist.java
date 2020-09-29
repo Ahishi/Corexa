@@ -1,8 +1,9 @@
 package com.example.corexa.history;
 
-public class Historylist {
+import androidx.annotation.NonNull;
 
-    private String nimi;
+public class Historylist {
+    private final String nimi;
 
 
     public Historylist(String nimi) {
@@ -17,9 +18,8 @@ public class Historylist {
 
     }
 
-
+    @NonNull
     public String toString(){
         return getName();
     }
-
 }
