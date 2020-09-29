@@ -16,7 +16,7 @@ public class HistorydetailsActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         int i = b.getInt(History.EXTRA, 0);
-
+        //Testi
         ((TextView)findViewById(R.id.lista))
                 .setText(Historyglobal.getInstance().getHistorylistValues().get(i).getName());
     }
