@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Historia extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -33,7 +33,7 @@ public class Historia extends AppCompatActivity {
 
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext()
-                                ,Asetukset.class));
+                                ,SettingsActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 

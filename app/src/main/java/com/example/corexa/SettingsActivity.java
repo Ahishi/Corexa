@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Asetukset extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -36,7 +36,7 @@ public class Asetukset extends AppCompatActivity {
 
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext()
-                                , Historia.class));
+                                , HistoryActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 
