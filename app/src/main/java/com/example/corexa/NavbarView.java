@@ -66,6 +66,3 @@ public class NavbarView extends Activity {
         });
     }
 }
-
-//NavbarView nav = new NavbarView(this, R.id.home);
-//nav.navbar();
