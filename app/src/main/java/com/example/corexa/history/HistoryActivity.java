@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import com.example.corexa.NavbarView;
 import com.example.corexa.SettingsActivity;
 import com.example.corexa.MainActivity;
 import com.example.corexa.R;
@@ -30,35 +32,8 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
-
-        bottomNavigationView.setSelectedItemId(R.id.history);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                , MainActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.settings:
-                        startActivity(new Intent(getApplicationContext()
-                                , SettingsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.history:
-                        return true;
-
-                }
-                return false;
-            }
-
-
-        });
+        NavbarView nav = new NavbarView(this, R.id.history);
+        nav.navbar();
 
         /* Arin historian koodin sisältö */
 

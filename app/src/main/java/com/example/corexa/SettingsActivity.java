@@ -28,34 +28,8 @@ public class SettingsActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
         //
 
-
-        bottomNavigationView = findViewById(R.id.bottomNav);
-
-        bottomNavigationView.setSelectedItemId(R.id.settings);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,MainActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.settings:
-                        return true;
-
-                    case R.id.history:
-                        startActivity(new Intent(getApplicationContext()
-                                , HistoryActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                }
-                return false;
-            }
-        });
+        NavbarView nav = new NavbarView(this, R.id.settings);
+        nav.navbar();
     }
 }
 

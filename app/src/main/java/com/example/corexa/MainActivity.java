@@ -17,36 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView=findViewById(R.id.bottomNav);
-
-        bottomNavigationView.setSelectedItemId(R.id.home);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.home:
-                        return true;
-
-                    case R.id.settings:
-                        startActivity(new Intent(getApplicationContext()
-                                ,SettingsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.history:
-                        startActivity(new Intent(getApplicationContext()
-                                , HistoryActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                }
-                return false;
-            }
-        });
-
-
-
+        NavbarView nav = new NavbarView(this, R.id.home);
+        nav.navbar();
 
     }
 }
