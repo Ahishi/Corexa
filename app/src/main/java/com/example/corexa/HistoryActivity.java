@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HistoryActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-
+    //HISTORIA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
                         return true;
 
                 }
+
                 return false;
             }
         });
