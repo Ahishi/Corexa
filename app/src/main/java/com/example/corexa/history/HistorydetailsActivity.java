@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.corexa.R;
 
+import java.util.List;
+
 public class HistorydetailsActivity extends AppCompatActivity {
+
+    List<History> Historylist = Historyglobal.getInstance().getHistorylistValues();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,7 @@ public class HistorydetailsActivity extends AppCompatActivity {
         int i = b.getInt(HistoryActivity.EXTRA, 0);
 
         ((TextView)findViewById(R.id.lista))
-                .setText(Historyglobal.getInstance().getHistorylistValues().get(i).getName());
+                .setText(Historylist.get(i).getVerensokeri());
     }
 
 }

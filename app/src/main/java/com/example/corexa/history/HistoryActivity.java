@@ -1,21 +1,33 @@
 package com.example.corexa.history;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.corexa.NavbarView;
+import com.example.corexa.SettingsActivity2;
+import com.example.corexa.MainActivity;
 import com.example.corexa.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
     public static final String EXTRA = "com.example.history.MESSAGE";
 
     private Historylist adapter;
+
+    List Historylist = Historyglobal.getInstance().getHistorylistValues();
 
 
     @Override
@@ -31,18 +43,16 @@ public class HistoryActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.lista);
         SearchView sv = findViewById(R.id.search);
 
-        /* Testausta varten */
-        if (Historyglobal.getInstance().getHistorylistValues().size() == 0) {
-
-            Historyglobal.getInstance().getHistorylistValues().add(new History("aamupala", "13"));
-            // Historyglobal.getInstance().getHistorylistValues().add(new History("iltapala"));
-
-        }
-
-
 
         /* Luodaan adapteri */
-        adapter = new Historylist(this, R.layout.adapter_view_layout, Historyglobal.getInstance().getHistorylistValues());
+
+        if (Historylist.isEmpty()) {
+            TextView textView = (TextView)findViewById(R.id.tekstilista);
+            textView.setText("Sorry, it seems that the list is empty.");
+        }
+
+        adapter = new Historylist(this, R.layout.adapter_view_layout, Historylist);
+
         listView.setAdapter(adapter);
 
         /* Valitaan tietty tapahtuma listasta */
