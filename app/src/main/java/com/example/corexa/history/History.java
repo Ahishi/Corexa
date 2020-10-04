@@ -3,32 +3,53 @@ package com.example.corexa.history;
 import androidx.annotation.NonNull;
 
 public class History {
+    private final int verensokeri;
+    private final int hiilihydraatit;
+    private final int insuliinimaara;
     private final String nimi;
-    private final String info;
+    private final String paivamaara;
 
+    public History(int verensokeri, int hiilihydraatit, int insuliinimaara, String nimi, String paivamaara) {
 
-    public History(String nimi, String info) {
-
+        this.verensokeri = verensokeri;
+        this.hiilihydraatit = hiilihydraatit;
+        this.insuliinimaara = insuliinimaara;
         this.nimi = nimi;
-        this.info = info;
+        this.paivamaara = paivamaara;
     }
 
-    public String getName(){
+    public String getVerensokeri(){
+
+        return Integer.toString(verensokeri);
+
+    }
+
+    public String getPaivamaara(){
+
+        return paivamaara;
+
+    }
+
+    public String getNimi(){
 
         return nimi;
 
     }
 
-    public String getInfo(){
+    public String getHiilihydraatit(){
 
-        return info;
+        return Integer.toString(hiilihydraatit);
 
     }
 
+    public String getInsuliinimaara(){
 
+        return Integer.toString(insuliinimaara);
+
+    }
 
     @NonNull
     public String toString(){
-        return getName();
+        return getNimi();
     }
 }

@@ -30,17 +30,17 @@ public class Historylist extends ArrayAdapter<History> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String nimi = getItem(position).getName();
-        String tiedot = getItem(position).getInfo();
+        String nimi = getItem(position).getNimi();
+        String paivamaara = getItem(position).getPaivamaara();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvnimi = convertView.findViewById(R.id.textView1);
-        TextView tvtiedot = convertView.findViewById(R.id.textView2);
+        TextView tvpaivamaara = convertView.findViewById(R.id.textView2);
 
         tvnimi.setText(nimi);
-        tvtiedot.setText(tiedot);
+        tvpaivamaara.setText(paivamaara);
 
         return convertView;
     }
