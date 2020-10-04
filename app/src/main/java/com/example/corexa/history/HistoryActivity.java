@@ -1,25 +1,16 @@
 package com.example.corexa.history;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.corexa.NavbarView;
-import com.example.corexa.SettingsActivity;
-import com.example.corexa.MainActivity;
 import com.example.corexa.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
     public static final String EXTRA = "com.example.history.MESSAGE";

@@ -43,7 +43,7 @@ public class NavbarView extends Activity {
                     case R.id.settings:
                         if (navElementID != item.getItemId()) {
                             inhtAct.startActivity(new Intent(inhtAct.getApplicationContext()
-                                    , SettingsActivity.class));
+                                    , SettingsActivity2.class));
                             inhtAct.overridePendingTransition(0, 0);
                             Log.d(TAG, "settingsActivity näytetään");
                         }
