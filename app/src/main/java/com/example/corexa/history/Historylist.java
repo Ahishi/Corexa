@@ -32,15 +32,18 @@ public class Historylist extends ArrayAdapter<History> {
 
         String nimi = getItem(position).getNimi();
         String paivamaara = getItem(position).getPaivamaara();
+        String ateriatyyppi = getItem(position).getAteriatyyppi();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvnimi = convertView.findViewById(R.id.textView1);
         TextView tvpaivamaara = convertView.findViewById(R.id.textView2);
+        TextView tvateriatyyppi = convertView.findViewById(R.id.textView3);
 
         tvnimi.setText(nimi);
         tvpaivamaara.setText(paivamaara);
+        tvateriatyyppi.setText(ateriatyyppi);
 
         return convertView;
     }

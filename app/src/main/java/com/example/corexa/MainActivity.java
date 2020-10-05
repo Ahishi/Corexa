@@ -2,13 +2,18 @@ package com.example.corexa;
 
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.content.Context;
         import android.content.SharedPreferences;
         import android.graphics.PorterDuff;
         import android.os.Bundle;
         import android.text.TextUtils;
+        import android.util.Log;
         import android.view.View;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.Spinner;
 
         import com.example.corexa.history.History;
         import com.example.corexa.history.Historyglobal;
@@ -22,8 +27,9 @@ package com.example.corexa;
         import java.util.List;
         import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private Button button;
+    private String ateriatyyppi = "Ei määritelty";
     List Historylist = Historyglobal.getInstance().getHistorylistValues();
 
     String date = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.getDefault()).format(new Date());
@@ -53,12 +59,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         ladataantietoa();
+
+
+        Spinner dropdown = findViewById(R.id.pudotusvalikko);
+
+        String[] ateriat = new String[]{"Tyyppi", "Aamiainen", "Brunssi", "Lounas", "Välipala", "Päivällinen", "Illallinen", "Iltapala"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ateriat);
+
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(this);
+
     }
+
+
 
     @Override
     public void onClick(View v) {
         button.setText("Tehty");
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+
+        switch (position) {
+            case 0:
+                ateriatyyppi = "Ei määritelty";
+                break;
+            case 1:
+                ateriatyyppi = "Aamiainen";
+                break;
+            case 2:
+                ateriatyyppi = "Brunssi";
+                break;
+            case 3:
+                ateriatyyppi = "Lounas";
+                break;
+            case 4:
+                ateriatyyppi = "Välipala";
+                break;
+            case 5:
+                ateriatyyppi = "Päivällinen";
+                break;
+            case 6:
+                ateriatyyppi = "Illallinen";
+                break;
+            case 7:
+                ateriatyyppi = "Iltapala";
+                break;
+
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // ei tapahdu mitään
+    }
+
 
     private void tallennetaantietoa() {
 
@@ -72,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String tulos2 = (hiilihydraatit.getText().toString());
         String tulos3 = (insuliinimaara.getText().toString());
         String tulos4 = (tapahtumanimi.getText().toString());
+
+        double tulosmmol = 0;
+        double mg = 0;
 
         /* resetoidaan virheiden värit */
 
@@ -97,16 +156,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tapahtumanimi.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
         }
 
+
         if (!TextUtils.isEmpty(tulos1) && !TextUtils.isEmpty(tulos2) && !TextUtils.isEmpty(tulos3) && !TextUtils.isEmpty(tulos4)) {
 
-            /* Kirjoitetaan tiedot SharedPreferencesiin */
-            Historyglobal.getInstance().getHistorylistValues().add(new History(Integer.valueOf(tulos1), Integer.valueOf(tulos2), Integer.valueOf(tulos3), tulos4, date));
+            /* mikä verensokeri arvo yksikkö */
 
-            SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+            SharedPreferences prefs = this.getSharedPreferences("com.example.corexa_preferences", Context.MODE_PRIVATE);
+            String yksikot = prefs.getString("yksiköt", null);
+
+            if (yksikot.equals("1")) {
+
+                Log.d("yksikot","mmol/l");
+
+                mg = 18 * Integer.parseInt(tulos1);
+
+                tulosmmol = Integer.parseInt(tulos1);
+
+            } else {
+
+                Log.d("yksikot","mg/dl");
+
+                tulosmmol = 1.0 * Integer.parseInt(tulos1) / 18;
+
+                mg = Integer.parseInt(tulos1);
+
+            }
+
+
+            /* Kirjoitetaan tiedot SharedPreferencesiin */
+            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Integer.valueOf(tulos2), Integer.valueOf(tulos3), tulos4, date, ateriatyyppi));
+
+            SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Gson gson = new Gson();
             String json = gson.toJson(Historyglobal.getInstance().getHistorylistValues());
-            editor.putString("task list", json);
+            editor.putString("arvot", json);
             editor.apply();
 
             verensokeri.getText().clear();
@@ -120,9 +204,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void ladataantietoa() {
         /* Luetaan sharedPreferences */
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
+        String json = sharedPreferences.getString("arvot", null);
         Type type = new TypeToken<List<History>>() {
         }.getType();
 

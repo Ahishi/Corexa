@@ -19,7 +19,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hae"
+        android:text="@string/hae"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/lista"
         app:layout_constraintEnd_toStartOf="@+id/search"
@@ -41,9 +41,10 @@
 
     <ListView
         android:id="@+id/lista"
-        android:layout_width="356dp"
-        android:layout_height="551dp"
+        android:layout_width="360dp"
+        android:layout_height="541dp"
         android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

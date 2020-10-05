@@ -19,7 +19,12 @@
         <item>mmol/l</item>
         <item>mg/dl</item>
     </string-array>
-    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="title_activity_settings2">Settings</string>
+    <string name="hae">hae</string>
+    <string name="verensokeri">Verensokeri</string>
+    <string name="hiilihydraatit">Hiilihydraatit</string>
+    <string name="insuliinin_m_r">Insuliinin määrä</string>
+    <string name="textview">textview</string>
 
 
 </resources>
