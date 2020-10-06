@@ -15,8 +15,10 @@ public class SettingsActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
         NavbarView nav = new NavbarView(this, R.id.settings);
         nav.navbar();
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())

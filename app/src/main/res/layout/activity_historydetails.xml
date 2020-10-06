@@ -8,24 +8,21 @@ tools:context=".history.HistorydetailsActivity">
 
     <TextView
         android:id="@+id/verensokeri2"
-        android:layout_width="90dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/verensokeri"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintTop_toTopOf="@id/verensokeri3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintEnd_toStartOf="@id/verensokeri3"/>
 
     <TextView
         android:id="@+id/verensokeri3"
-        android:layout_width="90dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/hiilihydraatit"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -33,63 +30,52 @@ tools:context=".history.HistorydetailsActivity">
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.25"/>
 
     <TextView
         android:id="@+id/verensokeri4"
-        android:layout_width="90dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/insuliinin_m_r"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/verensokeri3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintStart_toEndOf="@id/verensokeri3" />
 
     <TextView
         android:id="@+id/lista"
-        android:layout_width="90dp"
-        android:layout_height="29dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/textview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/verensokeri2"
+        app:layout_constraintEnd_toEndOf="@id/verensokeri2"
+        app:layout_constraintStart_toStartOf="@id/verensokeri2"/>
 
     <TextView
         android:id="@+id/lista2"
-        android:layout_width="90dp"
-        android:layout_height="29dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintTop_toTopOf="@id/lista"
+        app:layout_constraintEnd_toEndOf="@id/verensokeri3"
+        app:layout_constraintStart_toStartOf="@id/verensokeri3" />
 
     <TextView
         android:id="@+id/lista3"
-        android:layout_width="90dp"
-        android:layout_height="29dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintTop_toTopOf="@id/lista"
+        app:layout_constraintStart_toStartOf="@id/verensokeri4"
+        app:layout_constraintEnd_toEndOf="@id/verensokeri4"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
