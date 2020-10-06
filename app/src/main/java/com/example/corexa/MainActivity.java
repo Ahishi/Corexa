@@ -168,23 +168,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("yksikot","mmol/l");
 
-                mg = 18 * Integer.parseInt(tulos1);
+                mg = 18 * Double.parseDouble(tulos1);
 
-                tulosmmol = Integer.parseInt(tulos1);
+                tulosmmol = Double.parseDouble(tulos1);
 
             } else {
 
                 Log.d("yksikot","mg/dl");
 
-                tulosmmol = 1.0 * Integer.parseInt(tulos1) / 18;
+                tulosmmol = 1.0 * Double.parseDouble(tulos1) / 18;
 
-                mg = Integer.parseInt(tulos1);
+                mg = Double.parseDouble(tulos1);
 
             }
 
 
             /* Kirjoitetaan tiedot SharedPreferencesiin */
-            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Integer.valueOf(tulos2), Integer.valueOf(tulos3), tulos4, date, ateriatyyppi));
+
+            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), tulos4, date, ateriatyyppi));
 
             SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
