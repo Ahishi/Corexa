@@ -8,12 +8,14 @@ package com.example.corexa;
         import android.os.Bundle;
         import android.text.TextUtils;
         import android.util.Log;
+        import android.view.Gravity;
         import android.view.View;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Spinner;
+        import android.widget.Toast;
 
         import com.example.corexa.history.History;
         import com.example.corexa.history.Historyglobal;
@@ -117,7 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void tallennetaantietoa() {
-
+        Toast toast1 = Toast.makeText(MainActivity.this,"Tiedot tallennettu",Toast.LENGTH_LONG);
+        toast1.show();
         /* Tallennetaan etusilvulta tiedot */
         EditText verensokeri = findViewById(R.id.verensokeriEdit);
         EditText hiilihydraatit = findViewById(R.id.hiilihydraatitEdit);
@@ -168,23 +171,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("yksikot","mmol/l");
 
-                mg = 18 * Integer.parseInt(tulos1);
+                mg = 18 * Double.parseDouble(tulos1);
 
-                tulosmmol = Integer.parseInt(tulos1);
+                tulosmmol = Double.parseDouble(tulos1);
 
             } else {
 
                 Log.d("yksikot","mg/dl");
 
-                tulosmmol = 1.0 * Integer.parseInt(tulos1) / 18;
+                tulosmmol = 1.0 * Double.parseDouble(tulos1) / 18;
 
-                mg = Integer.parseInt(tulos1);
+                mg = Double.parseDouble(tulos1);
 
             }
 
 
             /* Kirjoitetaan tiedot SharedPreferencesiin */
-            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Integer.valueOf(tulos2), Integer.valueOf(tulos3), tulos4, date, ateriatyyppi));
+
+            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), tulos4, date, ateriatyyppi));
 
             SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
