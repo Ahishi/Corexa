@@ -8,12 +8,14 @@ package com.example.corexa;
         import android.os.Bundle;
         import android.text.TextUtils;
         import android.util.Log;
+        import android.view.Gravity;
         import android.view.View;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Spinner;
+        import android.widget.Toast;
 
         import com.example.corexa.history.History;
         import com.example.corexa.history.Historyglobal;
@@ -117,7 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void tallennetaantietoa() {
-
+        Toast toast1 = Toast.makeText(MainActivity.this,"Tiedot tallennettu",Toast.LENGTH_LONG);
+        toast1.show();
         /* Tallennetaan etusilvulta tiedot */
         EditText verensokeri = findViewById(R.id.verensokeriEdit);
         EditText hiilihydraatit = findViewById(R.id.hiilihydraatitEdit);
