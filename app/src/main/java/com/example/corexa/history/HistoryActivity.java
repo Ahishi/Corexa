@@ -2,10 +2,12 @@ package com.example.corexa.history;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +31,6 @@ public class HistoryActivity extends AppCompatActivity {
 
     List Historylist = Historyglobal.getInstance().getHistorylistValues();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         if (Historylist.isEmpty()) {
             TextView textView = (TextView)findViewById(R.id.tekstilista);
-            textView.setText("Sorry, it seems that the list is empty.");
+            textView.setText("Näyttää siltä, ettet ole tallentanut vielä mitään...");
         }
 
         adapter = new Historylist(this, R.layout.adapter_view_layout, Historylist);
