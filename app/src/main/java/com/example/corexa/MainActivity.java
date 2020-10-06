@@ -4,6 +4,7 @@ package com.example.corexa;
 
         import android.content.Context;
         import android.content.SharedPreferences;
+        import android.graphics.Color;
         import android.graphics.PorterDuff;
         import android.os.Bundle;
         import android.text.TextUtils;
@@ -137,26 +138,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         /* resetoidaan virheiden värit */
 
-        verensokeri.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-        hiilihydraatit.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-        insuliinimaara.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-        tapahtumanimi.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+        verensokeri.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
+        hiilihydraatit.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
+        insuliinimaara.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
+        tapahtumanimi.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
 
         /* Virheiden tarkistus */
         if (TextUtils.isEmpty(tulos1)) {
-            verensokeri.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+            verensokeri.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
         }
 
         if (TextUtils.isEmpty(tulos2)) {
-            hiilihydraatit.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+            hiilihydraatit.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
         }
 
         if (TextUtils.isEmpty(tulos3)) {
-            insuliinimaara.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+            insuliinimaara.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
         }
 
         if (TextUtils.isEmpty(tulos4)) {
-            tapahtumanimi.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP);
+            tapahtumanimi.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
         }
 
 
