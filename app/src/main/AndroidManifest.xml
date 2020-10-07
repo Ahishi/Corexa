@@ -31,7 +31,8 @@
 
         <activity
             android:name=".history.HistoryActivity"
-            android:label="Historia" />
+            android:label="Historia"
+            android:theme="@style/HistoryTheme"/>
 
         <activity
             android:name=".MainActivity"

@@ -17,7 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.corexa.CalendarActivity;
 import com.example.corexa.NavbarView;
 import com.example.corexa.SettingsActivity2;
 import com.example.corexa.MainActivity;
@@ -37,6 +39,9 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         NavbarView nav = new NavbarView(this, R.id.history);
         nav.navbar();
@@ -107,6 +112,23 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.item2){
+            startActivity(new Intent(getApplicationContext()
+                    , CalendarActivity.class));
+            overridePendingTransition(0, 0);
+            return true;
+        } else {
+            return true;
+        }
+    }
 }
 
 

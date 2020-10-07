@@ -12,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class CalendarActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "CalendarActivity";
 
     private ArrayList<String> text1 = new ArrayList<>();
     private ArrayList<String> text2 = new ArrayList<>();
@@ -21,7 +21,7 @@ public class CalendarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calendar);
         Log.d(TAG, "onCreate: started.");
 
         initTexts();
