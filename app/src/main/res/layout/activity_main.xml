@@ -9,10 +9,19 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="375dp"
         android:background="@drawable/spinner_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/insuliinimaaraEdit">
+        app:layout_constraintBottom_toTopOf="@+id/tallenna"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hiilihydraatitEdit" >
+
+        <Spinner
+            android:id="@+id/pudotusvalikko"
+            android:layout_width="170dp"
+            android:layout_height="55dp"
+            android:dropDownWidth="170dp"
+            android:spinnerMode="dropdown"
+            />
 
     </RelativeLayout>
 
@@ -118,16 +127,5 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
-
-    <Spinner
-        android:id="@+id/pudotusvalikko"
-        android:layout_width="155dp"
-        android:layout_height="55dp"
-        android:dropDownWidth="155dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/tallenna"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiilihydraatitEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

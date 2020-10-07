@@ -15,6 +15,10 @@
             android:label="Asetukset" />
 
         <activity
+            android:name=".CalendarActivity"
+            android:label="Kalenteri" />
+
+        <activity
             android:name=".history.HistorydetailsActivity"
             android:parentActivityName=".history.HistoryActivity">
 
