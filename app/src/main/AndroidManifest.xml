@@ -35,7 +35,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="Etusivu">
+            android:label="Corexa">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
