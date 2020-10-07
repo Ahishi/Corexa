@@ -1,38 +1,39 @@
 package com.example.corexa;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.content.Context;
-        import android.content.SharedPreferences;
-        import android.graphics.Color;
-        import android.graphics.PorterDuff;
-        import android.os.Bundle;
-        import android.text.TextUtils;
-        import android.util.Log;
-        import android.view.Gravity;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Spinner;
-        import android.widget.Toast;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-        import com.example.corexa.history.History;
-        import com.example.corexa.history.Historyglobal;
-        import com.google.gson.Gson;
-        import com.google.gson.reflect.TypeToken;
+import com.example.corexa.history.History;
+import com.example.corexa.history.Historyglobal;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-        import java.lang.reflect.Type;
-        import java.text.SimpleDateFormat;
-        import java.util.ArrayList;
-        import java.util.Date;
-        import java.util.List;
-        import java.util.Locale;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private Button button;
-    private String ateriatyyppi = "Ei määritelty";
+    private String ateriatyyppi;
+
     List Historylist = Historyglobal.getInstance().getHistorylistValues();
 
     String date = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.getDefault()).format(new Date());
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (position) {
             case 0:
-                ateriatyyppi = "Ei määritelty";
+                ateriatyyppi = null;
                 break;
             case 1:
                 ateriatyyppi = "Aamiainen";
@@ -120,18 +121,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void tallennetaantietoa() {
-        Toast toast1 = Toast.makeText(MainActivity.this,"Tiedot tallennettu",Toast.LENGTH_LONG);
-        toast1.show();
+
         /* Tallennetaan etusilvulta tiedot */
         EditText verensokeri = findViewById(R.id.verensokeriEdit);
         EditText hiilihydraatit = findViewById(R.id.hiilihydraatitEdit);
         EditText insuliinimaara = findViewById(R.id.insuliinimaaraEdit);
-        EditText tapahtumanimi = findViewById(R.id.tapahtumanimi);
+
 
         String tulos1 = (verensokeri.getText().toString());
         String tulos2 = (hiilihydraatit.getText().toString());
         String tulos3 = (insuliinimaara.getText().toString());
-        String tulos4 = (tapahtumanimi.getText().toString());
+
 
         double tulosmmol = 0;
         double mg = 0;
@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         verensokeri.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
         hiilihydraatit.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
         insuliinimaara.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
-        tapahtumanimi.getBackground().mutate().setColorFilter( Color.DKGRAY ,PorterDuff.Mode.SRC_ATOP);
 
         /* Virheiden tarkistus */
         if (TextUtils.isEmpty(tulos1)) {
@@ -156,12 +155,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             insuliinimaara.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
         }
 
-        if (TextUtils.isEmpty(tulos4)) {
-            tapahtumanimi.getBackground().mutate().setColorFilter( Color.RED ,PorterDuff.Mode.SRC_ATOP);
-        }
 
+        if (!TextUtils.isEmpty(tulos1) && !TextUtils.isEmpty(tulos2) && !TextUtils.isEmpty(tulos3) && !TextUtils.isEmpty(ateriatyyppi)) {
 
-        if (!TextUtils.isEmpty(tulos1) && !TextUtils.isEmpty(tulos2) && !TextUtils.isEmpty(tulos3) && !TextUtils.isEmpty(tulos4)) {
 
             /* mikä verensokeri arvo yksikkö */
 
@@ -176,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 tulosmmol = Double.parseDouble(tulos1);
 
-            } else {
+            } else if (yksikot.equals("2")) {
 
                 Log.d("yksikot","mg/dl");
 
@@ -184,25 +180,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 mg = Double.parseDouble(tulos1);
 
+            } else {
+
+                Toast toast2 = Toast.makeText(MainActivity.this,"Valitse yksikkö tyyppi asetuksista!",Toast.LENGTH_LONG);
+                toast2.show();
             }
 
 
             /* Kirjoitetaan tiedot SharedPreferencesiin */
 
-            Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), tulos4, date, ateriatyyppi));
+            if (mg != 0 && tulosmmol != 0) {
+                Toast toast1 = Toast.makeText(MainActivity.this,"Tiedot tallennettu",Toast.LENGTH_LONG);
+                toast1.show();
 
-            SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(Historyglobal.getInstance().getHistorylistValues());
-            editor.putString("arvot", json);
-            editor.apply();
+                Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), date, ateriatyyppi));
 
-            verensokeri.getText().clear();
-            hiilihydraatit.getText().clear();
-            insuliinimaara.getText().clear();
-            tapahtumanimi.getText().clear();
+                SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(Historyglobal.getInstance().getHistorylistValues());
+                editor.putString("arvot", json);
+                editor.apply();
 
+                verensokeri.getText().clear();
+                hiilihydraatit.getText().clear();
+                insuliinimaara.getText().clear();
+
+            }
+
+        } else if (ateriatyyppi != null){
+            Toast toast1 = Toast.makeText(MainActivity.this,"Täytä puuttuvat kentät!",Toast.LENGTH_LONG);
+            toast1.show();
+        } else {
+            Toast toast1 = Toast.makeText(MainActivity.this,"Valitse tyyppi",Toast.LENGTH_LONG);
+            toast1.show();
         }
 
     }

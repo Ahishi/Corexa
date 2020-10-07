@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,16 +49,32 @@ public class HistoryActivity extends AppCompatActivity {
 
         /* Luodaan adapteri */
 
+        SharedPreferences prefs = this.getSharedPreferences("com.example.corexa_preferences", Context.MODE_PRIVATE);
+        String yksikot = prefs.getString("yksiköt", null);
+
+
         if (Historylist.isEmpty()) {
             TextView textView = (TextView)findViewById(R.id.tekstilista);
             textView.setText("Näyttää siltä, ettet ole tallentanut vielä mitään...");
         }
 
-        adapter = new Historylist(this, R.layout.adapter_view_layout, Historylist);
 
-        listView.setAdapter(adapter);
+        if (yksikot.equals("1") || yksikot.equals("2"))
+        {
+            adapter = new Historylist(this, R.layout.adapter_view_layout, Historylist);
+
+            listView.setAdapter(adapter);
+
+        }
+        else{
+            TextView textView = (TextView)findViewById(R.id.tekstilista);
+            textView.setText("Et ole määrittänyt mittayksikköä asetuksista.");
+        }
+
+
 
         /* Valitaan tietty tapahtuma listasta */
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -68,6 +86,7 @@ public class HistoryActivity extends AppCompatActivity {
 
             }
         });
+
 
         /* haku */
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -87,5 +106,8 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
     }
+
 }
+
+
 

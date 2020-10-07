@@ -8,30 +8,28 @@ public class History {
     private final String verensokeriMG;
     private final Double hiilihydraatit;
     private final Double insuliinimaara;
-    private final String nimi;
     private final String paivamaara;
     private final String ateriatyyppi;
 
-    public History(String verensokeriMmol, String verensokeriMG, Double hiilihydraatit, Double insuliinimaara, String nimi, String paivamaara, String ateriatyyppi) {
+    public History(String verensokeriMmol, String verensokeriMG, Double hiilihydraatit, Double insuliinimaara, String paivamaara, String ateriatyyppi) {
 
         this.verensokeriMmol = verensokeriMmol;
         this.verensokeriMG = verensokeriMG;
         this.hiilihydraatit = hiilihydraatit;
         this.insuliinimaara = insuliinimaara;
-        this.nimi = nimi;
         this.paivamaara = paivamaara;
         this.ateriatyyppi = ateriatyyppi;
     }
 
     public String getVerensokeriMmol(){
 
-        return String.valueOf(verensokeriMmol) + " mmol/l";
+        return verensokeriMmol + " mmol/l";
 
     }
 
     public String getVerensokeriMG(){
 
-        return String.valueOf(verensokeriMG) + " mg/dl";
+        return verensokeriMG + " mg/dl";
 
     }
 
@@ -47,11 +45,6 @@ public class History {
 
     }
 
-    public String getNimi(){
-
-        return nimi;
-
-    }
 
     public String getHiilihydraatit(){
 
@@ -67,6 +60,6 @@ public class History {
 
     @NonNull
     public String toString(){
-        return getNimi();
+        return getAteriatyyppi();
     }
 }
