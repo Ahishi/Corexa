@@ -25,6 +25,7 @@
     <string name="hiilihydraatit">Hiilihydraatit</string>
     <string name="insuliinin_m_r">Insuliinin määrä</string>
     <string name="textview">textview</string>
+    <string name="nollaa_historian_tiedot">Nollaa historian tiedot</string>
 
 
 </resources>
