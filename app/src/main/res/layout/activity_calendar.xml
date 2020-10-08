@@ -4,22 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarActivity"
-    android:padding="10dp"
-    >
+    tools:context=".calendar.CalendarActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_history" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ruoka"
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verensokeri"
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hiilihydraatit"
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insuliini"
+
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:layout_marginEnd="8dp"
         android:id="@+id/divider"
         android:layout_width="0dp"
-        android:layout_height="1px"
-        android:background="#7a7a7a"
-        app:layout_constraintBottom_toTopOf="parent"
+        android:layout_height="2px"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/recyclerview"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_marginTop="95dp"
+        android:layout_marginBottom="53dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

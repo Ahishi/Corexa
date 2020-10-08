@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tyyppiTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="Aamupala"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/verensokeriTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="5.5"
+
+        app:layout_constraintEnd_toStartOf="@id/hiilihydraatitTv"
+        app:layout_constraintStart_toEndOf="@id/tyyppiTv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hiilihydraatitTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="50"
+
+        app:layout_constraintEnd_toStartOf="@id/insuliiniTv"
+        app:layout_constraintStart_toEndOf="@id/verensokeriTv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/insuliiniTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="5"
+
+        app:layout_constraintStart_toEndOf="@id/hiilihydraatitTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tyyppiTv"
+        app:layout_constraintTop_toTopOf="@id/tyyppiTv" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tyyppiTv"
+        app:layout_constraintTop_toTopOf="@id/tyyppiTv" />
+
+    <View
+        android:layout_marginEnd="8dp"
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="2px"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

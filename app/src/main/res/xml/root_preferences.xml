@@ -2,8 +2,6 @@
 
     <PreferenceCategory app:title="@string/messages_header">
 
-
-
         <ListPreference
             app:defaultValue="yksiköt"
             app:entries="@array/reply_entries"
@@ -11,6 +9,10 @@
             app:key="yksiköt"
             app:title="@string/reply_title"
             app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Historia">
 
     </PreferenceCategory>
 

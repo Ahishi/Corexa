@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.setText("Tehty");
     }
 
+    //Tutkitaan, mikä spinnerin valinnoista valitaan.
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
 
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast toast1 = Toast.makeText(MainActivity.this,"Tiedot tallennettu",Toast.LENGTH_LONG);
                 toast1.show();
 
-                Historyglobal.getInstance().getHistorylistValues().add(new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), date, ateriatyyppi));
+                Historyglobal.getInstance().getHistorylistValues().add(0, new History(String.format("%.2f", tulosmmol), String.format("%.2f", mg), Double.parseDouble(tulos2), Double.parseDouble(tulos3), date, ateriatyyppi));
 
                 SharedPreferences sharedPreferences = getSharedPreferences("history", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();

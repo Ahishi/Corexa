@@ -1,35 +1,42 @@
-package com.example.corexa;
+package com.example.corexa.calendar;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.corexa.R;
+import com.example.corexa.history.History;
+import com.example.corexa.history.Historyglobal;
+import com.example.corexa.history.Historylist;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> text1List;
-    private ArrayList<String> text2List;
-    private ArrayList<String> text3List;
+    private ArrayAdapter arrayAdapter;
 
-    public RecyclerViewAdapter(ArrayList<String> text1List, ArrayList<String> text2List, ArrayList<String> text3List){
-        this.text1List = text1List;
-        this.text2List = text2List;
-        this.text3List = text3List;
+    public RecyclerViewAdapter(ArrayAdapter arrayAdapter){
+        this.arrayAdapter = arrayAdapter;
+
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
@@ -37,28 +44,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        holder.text1.setText(text1List.get(position));
-        holder.text2.setText(text2List.get(position));
-        holder.text3.setText(text3List.get(position));
+        List<History> historyList = Historyglobal.getInstance().getHistorylistValues();
+        String str = historyList.get(0).getPaivamaara();
+        holder.date.setText("8.10.");
     }
 
     @Override
     public int getItemCount() {
-        return text1List.size();
+        HistoryListHandler historyListHandler = new HistoryListHandler(Historyglobal.getInstance().getHistorylistValues());
+        return historyListHandler.getDays();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView text1;
-        TextView text2;
-        TextView text3;
+        ListView listView;
+        TextView date;
+        TextView year;
+
         ConstraintLayout parentLayout;
 
                 public ViewHolder(View itemView){
                     super(itemView);
-                    text1 = itemView.findViewById(R.id.text1);
-                    text2 = itemView.findViewById(R.id.text2);
-                    text3 = itemView.findViewById(R.id.text3);
+
+                    date = itemView.findViewById(R.id.date);
+                    year = itemView.findViewById(R.id.year);
+
+
+                    listView = itemView.findViewById(R.id.list_view);
+
+                    listView.setAdapter(arrayAdapter);
+
                     parentLayout = itemView.findViewById(R.id.parent_layout);
                 }
     }

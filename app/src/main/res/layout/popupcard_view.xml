@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:background="@color/light_gray"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Haluatko varmasti tyhjentää historian?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/yes"
+        android:elevation="4dp"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Kyllä"
+        android:background="@drawable/yes_and_no_ripple_effect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/back"
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/back"
+        android:elevation="4dp"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yes_and_no_ripple_effect"
+        android:text="Takaisin"
+        app:layout_constraintTop_toTopOf="@id/yes"
+        app:layout_constraintStart_toEndOf="@id/yes"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

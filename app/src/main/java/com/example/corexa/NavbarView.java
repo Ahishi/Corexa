@@ -14,9 +14,17 @@ public class NavbarView extends Activity {
     private static final String TAG = "NavbarView";
     private BottomNavigationView bottomNavigationView;
     private Activity inhtAct;
-    private int navElementID;
+    private Integer navElementID;
 
-    public NavbarView(Activity inhtAct, int navElementID){
+    /**
+     *
+     * @param inhtAct
+     * @param navElementID
+     */
+
+    //Tuodaan tiedot kustakin aktiviteetista
+
+    public NavbarView(Activity inhtAct, Integer navElementID){
         this.inhtAct = inhtAct;
         this.navElementID = navElementID;
     }
@@ -27,6 +35,8 @@ public class NavbarView extends Activity {
         bottomNavigationView.setSelectedItemId(navElementID);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            //Tutkitaan viekä painettu nappi mihinkään, vai ollaanko siellä jo.
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

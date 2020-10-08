@@ -1,23 +1,13 @@
 package com.example.corexa.history;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.example.corexa.NavbarView;
 import com.example.corexa.R;
-import com.example.corexa.RecyclerViewAdapter;
 
 import java.util.List;
 
@@ -28,7 +18,12 @@ public class Historylist extends ArrayAdapter<History> {
     private Context mContext;
     int mResource;
 
-
+    /**
+     *
+     * @param context
+     * @param resource
+     * @param objects
+     */
 
     public Historylist(Context context, int resource, List<History> objects) {
         super(context, resource, objects);

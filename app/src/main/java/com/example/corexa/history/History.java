@@ -11,6 +11,16 @@ public class History {
     private final String paivamaara;
     private final String ateriatyyppi;
 
+    /**
+     *
+     * @param verensokeriMmol
+     * @param verensokeriMG
+     * @param hiilihydraatit
+     * @param insuliinimaara
+     * @param paivamaara
+     * @param ateriatyyppi
+     */
+
     public History(String verensokeriMmol, String verensokeriMG, Double hiilihydraatit, Double insuliinimaara, String paivamaara, String ateriatyyppi) {
 
         this.verensokeriMmol = verensokeriMmol;

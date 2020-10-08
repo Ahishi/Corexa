@@ -7,59 +7,53 @@
 
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/date"
         android:layout_width="88dp"
-        android:layout_height="46dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:padding="12dp"
-        android:text="filler1"
+        android:text="5.5."
+        android:paddingTop="12dp"
 
-        android:textSize="15sp"
+        android:textSize="20sp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/year"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:padding="12dp"
-        android:text="filler2"
+        android:paddingBottom="12dp"
+        android:text="2020"
 
         android:textSize="15sp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/date" />
 
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="wrap_content"
+    <com.example.corexa.calendar.CustomListView
+        android:id="@+id/list_view"
+        android:layout_marginLeft="88dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="filler3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/date"/>
 
-        android:textSize="15sp"
-
+    <View
+        android:layout_width="2px"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/date"
+        app:layout_constraintTop_toTopOf="@id/date" />
 
     <View
         android:layout_marginEnd="8dp"
         android:id="@+id/divider"
         android:layout_width="0dp"
-        android:layout_height="1px"
-        android:background="#7a7a7a"
+        android:layout_height="2px"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
